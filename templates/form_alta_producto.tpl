@@ -16,7 +16,7 @@
                         <option value="{$item->id}">{$item->nombre}</option>
                     {/foreach} 
                 </select>
-                <input class="form-control" type="file" name="input_name" id="imageToUpload">
+                <input class="form-control" type="file" name="input_name">
                 </div>
         </div>
     </div>
