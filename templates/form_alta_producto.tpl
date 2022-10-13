@@ -11,7 +11,7 @@
                 <input placeholder="Nombre producto" name="nombre" type="text" class="form-control" required>
                 <input placeholder="Nombre marca" name="marca" type="text" class="form-control" required>
                 <input placeholder="Precio producto" name="precio" type="number" class="form-control" required>
-                <select name="idCategoria" class="form-control">
+                <select name="idCategoria" class="form-control" required>
                     {foreach from=$listadoCategorias item=$item}
                         <option value="{$item->id}">{$item->nombre}</option>
                     {/foreach} 
