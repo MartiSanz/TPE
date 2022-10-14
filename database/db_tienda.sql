@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-10-2022 a las 23:14:10
+-- Tiempo de generación: 14-10-2022 a las 02:08:05
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -37,8 +37,8 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id`, `nombre`) VALUES
-(2, 'Deportivo'),
-(3, 'categoria editada');
+(20, 'Remeras'),
+(22, 'Buzos');
 
 -- --------------------------------------------------------
 
@@ -60,10 +60,11 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `marca`, `precio`, `id_categoria_fk`, `imagen`) VALUES
-(8, 'PRODUCTO NUEVO', 'MARCA NUEVA', 12333, 3, NULL),
-(9, 'producto1', 'marca1', 1000, 2, NULL),
-(10, 'producto2', 'marca1', 1000, 2, NULL),
-(16, 'ggdf', 'fgdfgdf', 435454, 2, 'img/producto/6340bbd846f79.jpg');
+(41, 'Buzo 1', 'Adidas', 2000, 22, 'img/producto/6348a7a51b77e.jpg'),
+(42, 'Buzo 2', 'Adidas', 1000, 22, 'img/producto/6348a7047596c.jpg'),
+(43, 'Buzo 3', 'Nike', 1000, 22, 'img/producto/6348a72b3098f.jpg'),
+(44, 'Remera 1', 'Nike', 1000, 20, 'img/producto/6348a73f1adfe.jpg'),
+(45, 'Remera 2', 'Adidas', 1000, 20, 'img/producto/6348a74f64d1c.jpg');
 
 -- --------------------------------------------------------
 
@@ -115,13 +116,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
@@ -137,7 +138,7 @@ ALTER TABLE `user`
 -- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_categoria_fk`) REFERENCES `categoria` (`id`);
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_categoria_fk`) REFERENCES `categoria` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
