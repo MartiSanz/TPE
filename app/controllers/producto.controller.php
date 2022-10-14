@@ -90,7 +90,6 @@ class ProductoController{
             header('Location: ' .BASE_URL. 'home');
         }
         else{
-            print_r($producto);
             header('Location: ' .BASE_URL. 'verProductosPorCategoria/' .$idCategoria);
         }   
     }
@@ -105,7 +104,6 @@ class ProductoController{
             header('Location: ' .BASE_URL. 'home');
         }
         else{
-            print_r($producto);
             header('Location: ' .BASE_URL. 'verProductosPorCategoria/' .$producto->id_categoria_fk);
         }   
 
