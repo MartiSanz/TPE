@@ -85,13 +85,9 @@ class ProductoController{
             $id = $this->model->editarProducto($id_producto, $nombreProducto, $nombreMarca, $precio, $idCategoria);
 
         }
-        
-        if($esHome){
-            header('Location: ' .BASE_URL. 'home');
-        }
-        else{
-            header('Location: ' .BASE_URL. 'verProductosPorCategoria/' .$idCategoria);
-        }   
+
+        header('Location: ' .BASE_URL. 'home');
+     
     }
 
     // elimina un producto

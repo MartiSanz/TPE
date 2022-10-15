@@ -7,7 +7,7 @@
 
     <div class='card-body'>
         <form action="editarCategoria/{$idCategoria}" method="POST" class="my-4">
-            <input placeholder="Nombre categoria" name="nombre" type="text" class="form-control" required>
+        <input value="{$nombreViejoCategoria}" placeholder="Nombre categoria" name="nombre" type="text" class="form-control" required>
             
             <div class='card-footer'>
                 <button type="submit" class='btn btn-secondary'>Editar Categoria</button>
