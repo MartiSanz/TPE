@@ -19,13 +19,10 @@ class ProductoController{
         $this->seLogueo = false;
         // verifica que el usuario este logueado
         $this->seLogueo = $this->authHelper->checkLoggedIn(); 
-
-        //$authHelper->checkLoggedIn(); // verifica que el usuario este logueado
     }
 
     //imprime la lista de productos
     function verProductos($esHome) {    
-        
         //obtiene los productos del modelo
         $productos = $this->model->getAll();
 
@@ -54,7 +51,6 @@ class ProductoController{
 
     // inserta un producto
     function agregarProducto(){
-        // validar entrada de datos
         $nombreProducto = $_POST['nombre'];
         $nombreMarca = $_POST['marca'];
         $precio = $_POST['precio'];
@@ -72,12 +68,11 @@ class ProductoController{
 
     // edita un producto
     function editarProducto($id_producto, $esHome){
-        // validar entrada de datos
         $nombreProducto = $_POST['nombre'];
         $nombreMarca = $_POST['marca'];
         $precio = $_POST['precio'];
         $idCategoria = $_POST['idCategoria'];
-    
+
         if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png" ) {
             $id = $this->model->editarProducto($id_producto, $nombreProducto, $nombreMarca, $precio, $idCategoria, $_FILES['input_name']['tmp_name']);
         }
@@ -85,14 +80,11 @@ class ProductoController{
             $id = $this->model->editarProducto($id_producto, $nombreProducto, $nombreMarca, $precio, $idCategoria);
 
         }
-
         header('Location: ' .BASE_URL. 'home');
-     
     }
 
     // elimina un producto
     function eliminarProducto($id, $esHome){
-        // validar entrada de datos
         $producto = $this->model->getProductoById($id);
         $this->model->eliminarProductoById($id);
 
@@ -102,7 +94,6 @@ class ProductoController{
         else{
             header('Location: ' .BASE_URL. 'verProductosPorCategoria/' .$producto->id_categoria_fk);
         }   
-
     }
 
     function verFormAgregarProducto($listadoCategorias) {   

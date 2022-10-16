@@ -85,11 +85,14 @@ class ProductoModel{
     function editarProducto($id_producto, $nombreProducto, $nombreMarca, $precio, $idCategoria, $imagen = null){
         
         $pathImg = null;
-        if ($imagen)
+        if ($imagen){
             $pathImg = $this->uploadImage($imagen);
-
-        $query = $this->db->prepare("UPDATE producto SET nombre = ?, marca = ?, precio = ?, id_categoria_fk = ?, imagen = ? WHERE id = ?");
-        $query->execute([$nombreProducto, $nombreMarca, $precio, $idCategoria, $pathImg, $id_producto]);
-        
+            $query = $this->db->prepare("UPDATE producto SET nombre = ?, marca = ?, precio = ?, id_categoria_fk = ?, imagen = ? WHERE id = ?");
+            $query->execute([$nombreProducto, $nombreMarca, $precio, $idCategoria, $pathImg, $id_producto]);
+        }
+        else{
+            $query = $this->db->prepare("UPDATE producto SET nombre = ?, marca = ?, precio = ?, id_categoria_fk = ? WHERE id = ?");
+            $query->execute([$nombreProducto, $nombreMarca, $precio, $idCategoria, $id_producto]);
+        }
     }
 }

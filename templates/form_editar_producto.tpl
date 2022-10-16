@@ -66,11 +66,11 @@
                                 {/if}   
                             {/foreach} 
                         </select></td>
-                        <td><input class="form-control" type="file" name="input_name"></td>
+                    <td><input type="file" class="form-control" value='{$producto->imagen}' name="input_name"></input></td>
                     </tr>
                 </tbody>
-              
-            </table>
+
+                </table>
             
             <div class='card-footer'>
                 <button type="submit" class='btn btn-secondary'>Editar Producto</button>
