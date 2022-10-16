@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2022 a las 02:08:05
+-- Tiempo de generación: 16-10-2022 a las 03:07:37
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -37,8 +37,9 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id`, `nombre`) VALUES
-(20, 'Remeras'),
-(22, 'Buzos');
+(20, 'Remera'),
+(22, 'Buzos'),
+(24, 'Zapatillas');
 
 -- --------------------------------------------------------
 
@@ -60,11 +61,13 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `marca`, `precio`, `id_categoria_fk`, `imagen`) VALUES
-(41, 'Buzo 1', 'Adidas', 2000, 22, 'img/producto/6348a7a51b77e.jpg'),
-(42, 'Buzo 2', 'Adidas', 1000, 22, 'img/producto/6348a7047596c.jpg'),
-(43, 'Buzo 3', 'Nike', 1000, 22, 'img/producto/6348a72b3098f.jpg'),
-(44, 'Remera 1', 'Nike', 1000, 20, 'img/producto/6348a73f1adfe.jpg'),
-(45, 'Remera 2', 'Adidas', 1000, 20, 'img/producto/6348a74f64d1c.jpg');
+(41, 'Buzo 1', 'Adidas', 2000, 22, 'img/producto/634b35a08e5a3.jpg'),
+(42, 'Buzo 2', 'Adidas', 1000, 22, 'img/producto/634b35b3be7c1.jpg'),
+(43, 'Buzo 3', 'Nike', 1000, 22, 'img/producto/634b3e56bdd73.jpg'),
+(51, 'Remera 1', 'Adidas', 2000, 20, 'img/producto/634b3e409e81e.jpg'),
+(56, 'Remera 2', 'Adidas', 1000, 20, 'img/producto/634b3e933a22e.jpg'),
+(58, 'Zapatillas 1', 'Adidas', 20000, 24, 'img/producto/634b42e7a5b91.jpg'),
+(59, 'Zapatillas', 'Nike', 30000, 24, 'img/producto/634b4303e74e3.jpg');
 
 -- --------------------------------------------------------
 
@@ -116,13 +119,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
