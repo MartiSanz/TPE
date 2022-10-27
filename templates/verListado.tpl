@@ -15,7 +15,7 @@
                     {else}
                         <th></th>
                     {/if}  
-                    {if $seLogueo}
+                    {if isset($smarty.session.IS_LOGGED)}
                         <th><a class="btn btn-outline-success" href="{$hrefBotonEditar}{$item->id}/{$esHome}">{$botonEditar}</a></th>
                         <th><a class="btn btn btn-danger" href='{$hrefBotonEliminar}{$item->id}/{$esHome}'>{$botonEliminar}</a></th>
                     {/if}              
@@ -25,7 +25,7 @@
         </table>
         
         {if $esHome}
-            {if $seLogueo}
+            {if isset($smarty.session.IS_LOGGED)}
                 <div class='card-footer'>
                     <span> <a class='btn btn-outline-secondary' href='{$hrefBotonAgregar}'> {$botonAgregar} </a> </span>
                 </div>

@@ -9,7 +9,7 @@ class ProductoView{
         $this->smarty = new Smarty();
     }
     
-    function verProductos($productos, $esHome, $seLogueo, $titulo){
+    function verProductos($productos, $esHome, $titulo){
         //titulos
         $this->smarty->assign('titulo', $titulo);
         $this->smarty->assign('botonAgregar', 'Agregar producto');
@@ -34,8 +34,6 @@ class ProductoView{
         //es listado de home?
         $this->smarty->assign('esHome', $esHome);
 
-        //esta logueado?
-        $this->smarty->assign('seLogueo', $seLogueo);
         
         $this->smarty->display('templates/verListado.tpl');   
     }

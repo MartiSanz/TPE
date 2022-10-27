@@ -7,7 +7,7 @@ class CategoriaView{
         $this->smarty = new Smarty();
     }
 
-    function verCategorias($categorias, $esHome, $seLogueo){
+    function verCategorias($categorias, $esHome){
         //titulos 
         $this->smarty->assign('titulo', 'LISTADO DE CATEGORIAS');
         $this->smarty->assign('botonAgregar', 'Agregar categoria');
@@ -25,9 +25,6 @@ class CategoriaView{
 
         //es listado de home, es decir, listado de categorias? si
         $this->smarty->assign('esHome', $esHome); // MODIFICAR tendria que pasar el parameto como hice con loproducto
-
-        //esta logueado?
-        $this->smarty->assign('seLogueo', $seLogueo);
 
         $this->smarty->display('templates/verListado.tpl');   
     }

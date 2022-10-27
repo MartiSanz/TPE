@@ -12,20 +12,19 @@ class CategoriaController{
     public function __construct(){
         $this->view = new CategoriaView();
         $this->model = new CategoriaModel();
+
+        $this->authHelper = new AuthHelper();
+
     }
 
     //imprime la lista de categorias
     function verCategorias($esHome) {  
-        // BARRRERA DE SEGURIDAD - verifica que el usuario este logueado  
-        $this->authHelper = new AuthHelper();
-        $seLogueo = 0;
-        $seLogueo = $this->authHelper->checkLoggedIn(); 
-        
+        session_start();        
         //obtiene los categorias del modelo
         $categorias = $this->model->getAll();
 
         //actualiza la vista
-        $this->view->verCategorias($categorias, $esHome, $seLogueo);
+        $this->view->verCategorias($categorias, $esHome);
     }
 
     //retorna la lista de categorias
@@ -40,6 +39,7 @@ class CategoriaController{
 
     function verFormAgregarCategoria() {   
         //actualiza la vista
+        $this->authHelper->checkLoggedIn(); 
         $this->view->verFormAgregarCategoria();
     }
 
@@ -48,6 +48,8 @@ class CategoriaController{
     }
 
     function verFormEditarCategoria($id_categoria) {   
+
+        $this->authHelper->checkLoggedIn(); 
         //actualiza la vista
         $categoria = $this->model->getCategoriaById($id_categoria);
 
@@ -71,6 +73,7 @@ class CategoriaController{
 
     // elimina una categoria
     function eliminarCategoria($id){
+        $this->authHelper->checkLoggedIn(); 
         $this->model->eliminarCategoriaById($id);
 
         header('Location: ' .BASE_URL. 'verCategorias');

@@ -9,8 +9,8 @@ class AuthHelper {
     public function checkLoggedIn() {
         session_start(); // NO INICIA UNA NUEVA SESION, CONSULTA LA SESION QUE ESTA INICIADA
         if (!isset($_SESSION['IS_LOGGED'])) { // si no esta seteado IS_LOGGED en true, sigo mostrando login
-            return false;
+            header("Location: " . BASE_URL . 'ingresar');
+            die();
         }
-        return true;
     } 
 }
