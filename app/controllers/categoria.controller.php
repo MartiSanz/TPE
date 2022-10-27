@@ -56,17 +56,21 @@ class CategoriaController{
 
     // inserta una categoria
     function agregarCategoria(){
-        // validar entrada de datos
-        $nombreCategoria = $_POST['nombre'];
-    
-        $id = $this->model->insertar($nombreCategoria);
+        if (!empty($_POST['nombre'])) {
+            $nombreCategoria = $_POST['nombre'];
+        
+            $id = $this->model->insertar($nombreCategoria);
 
-        header('Location: ' .BASE_URL. 'verCategorias');
+            header('Location: ' .BASE_URL. 'verCategorias');
+        }
+        else{
+            $error = "Ingrese todos los datos";
+            $this->view->verFormAgregarCategoria($error);
+        }
     }
 
     // elimina una categoria
     function eliminarCategoria($id){
-        // validar entrada de datos
         $this->model->eliminarCategoriaById($id);
 
         header('Location: ' .BASE_URL. 'verCategorias');
@@ -74,12 +78,18 @@ class CategoriaController{
 
     // edita una categoria
     function editarCategoria($id){
-        // validar entrada de datos
-        $nombreCategoria = $_POST['nombre'];
-    
-        $id = $this->model->editarCategoria($id, $nombreCategoria);
+        if (!empty($_POST['nombre'])) {
+            $nombreCategoria = $_POST['nombre'];
+        
+            $id = $this->model->editarCategoria($id, $nombreCategoria);
 
-        header('Location: ' .BASE_URL. 'verCategorias');
+            header('Location: ' .BASE_URL. 'verCategorias');
+        }
+        else{
+            $categoria = $this->model->getCategoriaById($id);
+            $error = "Ingrese todos los datos";
+            $this->view->verFormEditarCategoria($categoria, $error);
+        }
     }
 
     

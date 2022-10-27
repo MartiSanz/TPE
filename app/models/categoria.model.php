@@ -54,7 +54,7 @@ class CategoriaModel{
      * elimina una categoria en la base de datos.
     */
     function eliminarCategoriaById($id){
-        // validar entrada de datos
+
         $query = $this->db->prepare("DELETE FROM categoria WHERE id = ?");
         $query->execute([$id]);
     }
@@ -63,11 +63,9 @@ class CategoriaModel{
      * edita una categoria en la base de datos.
     */
     function editarCategoria($id, $nombreCategoria){
-        // validar entrada de datos
+        
         $query = $this->db->prepare("UPDATE categoria SET nombre = ? WHERE id = ?");
         $query->execute([$nombreCategoria, $id]);
-
-    //    var_dump($id, $nombreCategoria);
     }
 
 }

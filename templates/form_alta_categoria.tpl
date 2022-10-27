@@ -7,11 +7,16 @@
                 <div class='card-header'>
                     <span> <b>Agregar Categoria</b></span>
                 </div>
-                <input placeholder="Nombre categoria" name="nombre" type="text" class="form-control">
+                <input placeholder="Nombre categoria" name="nombre" type="text" class="form-control" required>
             </div>
         </div>
     </div>
 
+    {if $error}
+        <div>
+            <span class="text-danger"> {$error} </span>
+        </div>
+    {/if} 
     <button type="submit" class='btn btn-secondary'>Guardar</button>
     <span> <a class='btn btn btn-danger' href="./verCategorias"> Cancelar </a> </span>
 

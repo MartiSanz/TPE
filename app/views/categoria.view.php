@@ -32,11 +32,16 @@ class CategoriaView{
         $this->smarty->display('templates/verListado.tpl');   
     }
 
-    function verFormAgregarCategoria(){
+    function verFormAgregarCategoria($error = null){
+
+        $this->smarty->assign('error', $error);
         $this->smarty->display('templates/form_alta_categoria.tpl');   
     }
     
-    function verFormEditarCategoria($categoria){
+    function verFormEditarCategoria($categoria, $error = null){
+
+        $this->smarty->assign('error', $error);
+
         $this->smarty->assign('idCategoria', $categoria->id);
         $this->smarty->assign('nombreViejoCategoria', $categoria->nombre);
         $this->smarty->display('templates/form_editar_categoria.tpl');   
