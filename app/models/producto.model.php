@@ -74,7 +74,6 @@ class ProductoModel{
      * elimina un producto en la base de datos.
     */
     function eliminarProductoById($id){
-        // validar entrada de datos
         $query = $this->db->prepare("DELETE FROM producto WHERE id = ?");
         $query->execute([$id]);
     }

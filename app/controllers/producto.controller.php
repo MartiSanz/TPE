@@ -50,37 +50,53 @@ class ProductoController{
     }
 
     // inserta un producto
-    function agregarProducto(){
-        $nombreProducto = $_POST['nombre'];
-        $nombreMarca = $_POST['marca'];
-        $precio = $_POST['precio'];
-        $idCategoria = $_POST['idCategoria'];
+    function agregarProducto($listadoCategorias){
+        
+        if (!empty($_POST['nombre']) && !empty($_POST['marca']) && !empty($_POST['precio']) && !empty($_POST['idCategoria'])) {
+ 
+            $nombreProducto = $_POST['nombre'];
+            $nombreMarca = $_POST['marca'];
+            $precio = $_POST['precio'];
+            $idCategoria = $_POST['idCategoria'];
 
-        if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png" ) {
-            $id = $this->model->insertar($nombreProducto, $nombreMarca, $precio, $idCategoria,  $_FILES['input_name']['tmp_name']);
-        }
-        else {
-            $id = $this->model->insertar($nombreProducto, $nombreMarca, $precio, $idCategoria);
-        }
+            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png" ) {
+                $id = $this->model->insertar($nombreProducto, $nombreMarca, $precio, $idCategoria,  $_FILES['input_name']['tmp_name']);
+            }
+            else {
+                $id = $this->model->insertar($nombreProducto, $nombreMarca, $precio, $idCategoria);
+            }
 
-        header('Location: ' .BASE_URL. 'home');
+            header('Location: ' .BASE_URL. 'home');
+        }
+        else{
+            $error = "Ingrese todos los datos requeridos";
+            $this->view->verFormAgregarProducto($listadoCategorias, $error);
+        }
     }
 
     // edita un producto
-    function editarProducto($id_producto, $esHome){
-        $nombreProducto = $_POST['nombre'];
-        $nombreMarca = $_POST['marca'];
-        $precio = $_POST['precio'];
-        $idCategoria = $_POST['idCategoria'];
+    function editarProducto($id_producto, $listadoCategorias){
 
-        if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png" ) {
-            $id = $this->model->editarProducto($id_producto, $nombreProducto, $nombreMarca, $precio, $idCategoria, $_FILES['input_name']['tmp_name']);
-        }
-        else {
-            $id = $this->model->editarProducto($id_producto, $nombreProducto, $nombreMarca, $precio, $idCategoria);
+        if (!empty($_POST['nombre']) && !empty($_POST['marca']) && !empty($_POST['precio']) && !empty($_POST['idCategoria'])) {
+            $nombreProducto = $_POST['nombre'];
+            $nombreMarca = $_POST['marca'];
+            $precio = $_POST['precio'];
+            $idCategoria = $_POST['idCategoria'];
 
+            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png" ) {
+                $id = $this->model->editarProducto($id_producto, $nombreProducto, $nombreMarca, $precio, $idCategoria, $_FILES['input_name']['tmp_name']);
+            }
+            else {
+                $id = $this->model->editarProducto($id_producto, $nombreProducto, $nombreMarca, $precio, $idCategoria);
+
+            }
+            header('Location: ' .BASE_URL. 'home');
+        }        
+        else{
+            $error = "Ingrese todos los datos requeridos";
+            $producto = $this->model->getProductoById($id_producto);
+            $this->view->verFormEditarProducto($listadoCategorias, $producto, $error);
         }
-        header('Location: ' .BASE_URL. 'home');
     }
 
     // elimina un producto

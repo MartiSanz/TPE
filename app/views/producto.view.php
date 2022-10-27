@@ -68,12 +68,13 @@ class ProductoView{
         $this->smarty->display('templates/verProducto.tpl');   
     }
 
-    function verFormAgregarProducto($listadoCategorias){
+    function verFormAgregarProducto($listadoCategorias, $error = null){
+        $this->smarty->assign('error', $error);
         $this->smarty->assign('listadoCategorias', $listadoCategorias);
         $this->smarty->display('templates/form_alta_producto.tpl');   
     }
 
-    function verFormEditarProducto($listadoCategorias, $producto){
+    function verFormEditarProducto($listadoCategorias, $producto, $error = null){
         //titulos
         $this->smarty->assign('tituloCol1', 'Nombre');
         $this->smarty->assign('tituloCol2', 'Marca');
@@ -82,6 +83,7 @@ class ProductoView{
         $this->smarty->assign('tituloCol5', 'Imagen');
 
         $this->smarty->assign('producto', $producto);
+        $this->smarty->assign('error', $error);
         
         $this->smarty->assign('listadoCategorias', $listadoCategorias);
         $this->smarty->display('templates/form_editar_producto.tpl');   

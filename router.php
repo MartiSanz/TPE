@@ -62,13 +62,17 @@ switch ($params[0]) {
         break;
     case 'agregarProducto':
         $controllerProducto = new ProductoController();
-        $controllerProducto->agregarProducto();
+        $controllerCategoria = new CategoriaController();
+        $categorias = $controllerCategoria->getCategorias();
+        $controllerProducto->agregarProducto($categorias);
         break;
     case 'editarProducto':
         $controllerProducto = new ProductoController();
+        $controllerCategoria = new CategoriaController();
         $id_producto = $params[1];
-        $esHome = $params[2];
-        $controllerProducto->editarProducto($id_producto, $esHome);
+     //   $esHome = $params[2];
+        $categorias = $controllerCategoria->getCategorias();
+        $controllerProducto->editarProducto($id_producto, $categorias);
         break;
     case 'eliminarProducto':
         $controllerProducto = new ProductoController();

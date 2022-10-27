@@ -73,6 +73,11 @@
                 </table>
             
             <div class='card-footer'>
+                {if $error}
+                    <div>
+                        <span class="text-danger"> {$error} </span>
+                    </div>
+                {/if} 
                 <button type="submit" class='btn btn-secondary'>Editar Producto</button>
                 <span> <a class='btn btn btn-danger' href="./home"> Cancelar </a> </span>
             </div>
